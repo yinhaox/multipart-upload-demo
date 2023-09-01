@@ -1,0 +1,31 @@
+### Register to upload
+POST http://localhost:8080/file/v1/register
+Content-Type: application/json
+
+{
+    "name": "demo",
+    "extName": ".zip",
+    "size": 12720
+}
+
+
+### Generate upload URL
+POST http://localhost:8080/file/v1/gen-upload-urls
+Content-Type: application/json
+
+{
+  "objectKeyInfo": "dA==",
+  "partInfos": [
+    {
+      "partNumber": 1,
+      "partSize": 12720
+    }
+  ]
+}
+
+
+### Upload binary files using PUT method
+PUT http://localhost:8080/file/v1/upload?objectKeyInfo=dA%3D%3D&skipBytes=0
+Content-Type: application/zip
+
+< /C:/Users/yinhaox/demo.zip
